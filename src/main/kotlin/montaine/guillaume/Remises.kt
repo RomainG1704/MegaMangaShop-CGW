@@ -1,6 +1,4 @@
 package org.example.montaine.guillaume.montaine.guillaume
-
-
 class Remises {
 
     private val remises: MutableList<Remise>
@@ -17,7 +15,7 @@ class Remises {
         remises.add(remise)
     }
 
-    fun getRemiseFor(remise: Int) : Float {
+    fun getRemiseFor(remise: Float) : Float {
         val correctRemise = remises.find { current -> current.amountInRange(remise) }
         if (correctRemise != null) {
             return correctRemise.pourcent
@@ -25,3 +23,5 @@ class Remises {
         return 0f
     }
 }
+
+

@@ -1,13 +1,23 @@
 package org.example.montaine.guillaume.montaine.guillaume
 
-import montaine.guillaume.Boutique
+class Commande(private val boutique: Boutique) {
 
-class Commande(boutique: Boutique, panier: Panier) {
+    private val panier: Panier = Panier()
 
-    private val panier: Panier = panier
-    private val boutique: Boutique = boutique
+    public fun getPanier(): Panier {
+        return panier
+    }
 
     public fun calculerPrix(): Float {
-        return this.panier.calculerPrix() //TODO add pays tax
+        var prixTaxe = panier.calculerPrix()
+
+        when(boutique.Pays) {
+            "France" -> prixTaxe *= 1.2F
+            "Espagne" -> prixTaxe *= 1.182F
+            "Allemagne" -> prixTaxe *= 1.156F
+            "Royaume-Uni" -> prixTaxe *= 1.228F
+            "Belgique" -> prixTaxe *= 1.17F
+        }
+        return prixTaxe * remiseGlobale.getRemiseFor(prixTaxe)
     }
 }

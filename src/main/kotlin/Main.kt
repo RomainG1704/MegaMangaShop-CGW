@@ -13,5 +13,5 @@ fun main() {
         Remise(500, 1000, 0.93f),
         Remise(500, Int.MAX_VALUE, 0.9f)
     ))
-    println(remises.getRemiseFor(162))
+
 }

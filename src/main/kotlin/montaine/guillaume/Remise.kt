@@ -19,8 +19,8 @@ class Remise : Comparable<Remise> {
         this.pourcent = pourcent
     }
 
-    fun amountInRange(remise: Int) : Boolean{
-        return remise in start..end
+    fun amountInRange(remise: Float) : Boolean{
+        return remise in start.toFloat()..end.toFloat()
     }
 
     fun isOverlapping(other: Remise): Boolean {
