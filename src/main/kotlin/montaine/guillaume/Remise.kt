@@ -1,10 +1,10 @@
 package org.example.montaine.guillaume.montaine.guillaume
 
-class Remise {
+class Remise : Comparable<Remise> {
 
     private val start: Int
     private val end: Int
-    private val pourcent: Float
+    val pourcent: Float
 
 
     constructor(start: Int, end: Int, pourcent: Float) {
@@ -19,11 +19,15 @@ class Remise {
         this.pourcent = pourcent
     }
 
+    fun amountInRange(remise: Int) : Boolean{
+        return remise in start..end
+    }
+
     fun isOverlapping(other: Remise): Boolean {
         return other.end < this.start || this.start > other.end
     }
 
-    public operator fun compareTo(other: Remise) : Int {
+    override fun compareTo(other: Remise) : Int {
         if (this.isOverlapping(other)) {
             throw IllegalArgumentException("Les remise $this et $other se chevauche")
         }
